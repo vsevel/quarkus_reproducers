@@ -1,0 +1,9 @@
+name: compose-base-kafka
+services:
+  apicurio:
+    image: apicurio/apicurio-registry-mem:2.4.2.Final
+    labels:
+      # io.quarkus.devservices.compose.wait_for.ports.disable: true
+      io.quarkus.devservices.compose.wait_for.logs: .*Installed features.*
+    ports:
+      - "8080"

@@ -10,13 +10,13 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/jaxb_reproducer .
+# docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/compose-base-kafka .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/jaxb_reproducer
+# docker run -i --rm -p 8080:8080 quarkus/compose-base-kafka
 #
-# The `quay.io/quarkus/quarkus-micro-image:2.0` base image is based on UBI 9.
+# The `quay.io/quarkus/ubi9-quarkus-micro-image:2.0` base image is based on UBI 9.
 # To use UBI 8, switch to `quay.io/quarkus/quarkus-micro-image:2.0`.
 ###
 FROM quay.io/quarkus/ubi9-quarkus-micro-image:2.0
