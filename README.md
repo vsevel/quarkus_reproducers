@@ -44,6 +44,15 @@ tools.jackson.databind.DatabindException: Problem deserializing property 'validi
 
 The same endpoint returns `OK` in JVM mode.
 
+Adding a setter for the `validity` field fixes the issue: with the setter, `GET /jackson` returns `OK` in native mode as well. The setter is present but commented out in `JacksonPojo`:
+
+```java
+// uncommenting this setter fixes the issue in native mode
+//    public void setValidity(boolean validity) {
+//        this.validity = validity;
+//    }
+```
+
 ## Reproducing the issue
 
 Prerequisites: JDK 25 and a running Docker daemon.

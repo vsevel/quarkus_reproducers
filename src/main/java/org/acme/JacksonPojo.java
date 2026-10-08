@@ -20,6 +20,11 @@ public class JacksonPojo {
         return validity;
     }
 
+    // uncommenting this setter fixes the issue in native mode
+//    public void setValidity(boolean validity) {
+//        this.validity = validity;
+//    }
+
     @Override
     public String toString() {
         return "JacksonPojo{" +
