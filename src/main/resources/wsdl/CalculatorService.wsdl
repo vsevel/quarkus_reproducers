@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CalculatorService"
+    targetNamespace="http://www.jboss.org/eap/quickstarts/wscalculator/Calculator"
+    xmlns:tns="http://www.jboss.org/eap/quickstarts/wscalculator/Calculator"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.jboss.org/eap/quickstarts/wscalculator/Calculator" elementFormDefault="unqualified">
+      <xsd:element name="add" type="tns:add"/>
+      <xsd:element name="addResponse" type="tns:addResponse"/>
+      <xsd:complexType name="add">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="xsd:int"/>
+          <xsd:element name="arg1" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="addResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="add">
+    <wsdl:part name="parameters" element="tns:add"/>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="parameters" element="tns:addResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CalculatorService">
+    <wsdl:operation name="add">
+      <wsdl:input name="add" message="tns:add"/>
+      <wsdl:output name="addResponse" message="tns:addResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorServiceSoapBinding" type="tns:CalculatorService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="add">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="add"><soap:body use="literal"/></wsdl:input>
+      <wsdl:output name="addResponse"><soap:body use="literal"/></wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculatorService">
+    <wsdl:port name="CalculatorPort" binding="tns:CalculatorServiceSoapBinding">
+      <soap:address location="http://localhost:8080/soap/calculator"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
